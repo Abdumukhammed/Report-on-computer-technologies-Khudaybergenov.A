@@ -1,0 +1,906 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Национальный исследовательский ядерный университет «МИФИ»
+\end_layout
+
+\begin_layout Subsection*
+Отчет по предмету 'Компьютерные технологии'.
+\end_layout
+
+\begin_layout Paragraph
+Группа: М22-403
+\end_layout
+
+\begin_layout Paragraph*
+Выполнил студент: Худайбергенов Абдумухамед.
+\end_layout
+
+\begin_layout Paragraph
+1-Задача: Найдите все положительные, ненулевые корни уравнения 
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\begin{equation}
+sinx−0.1x=0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+РЕШЕНИЕ:
+\end_layout
+
+\begin_layout Standard
+Для решения я сначала построил график, чтобы увидеть, в каком диапазоне
+ функция меняет свой знак, например, от положительного к отрицательному.
+ Потому что мы знаем, что между такими значениями функция равна нулю.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Для этого я написал следующий листинг.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f=@(x)sin(x)-0.1*x;$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x=0:0.1:10;$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y=f(x);$
+\end_inset
+
+plot
+\begin_inset Formula $(x,y$
+\end_inset
+
+, 'LineWidth', 2
+\begin_inset Formula $);$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+grid on;
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 1-graphics in Lyx.jpg
+	lyxscale 40
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+1-График для функции
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Связано с этим графиком, я выбрал диапазон от 2 до 4.И еще раз для функции
+ я написал следующий листинг.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+>> 
+\begin_inset Formula $f=@(x)sin(x)-0.1*x;$
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-4"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x$
+\end_inset
+
+ = linspace
+\begin_inset Formula $(2,4,1000);$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+positive_roots =
+\begin_inset Formula $[]$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Standard
+for i = 1:length
+\begin_inset Formula $(x)$
+\end_inset
+
+-1
+\end_layout
+
+\begin_layout Standard
+if
+\begin_inset Formula $f(x(i))*f(x(i+1))<0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+root = fzero
+\begin_inset Formula $(f,[x(i),x(i+1)])$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Standard
+if root > 0
+\end_layout
+
+\begin_layout Standard
+positive_roots = 
+\begin_inset Formula $[$
+\end_inset
+
+positive_roots, root
+\begin_inset Formula $]$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Standard
+end 
+\end_layout
+
+\begin_layout Standard
+end 
+\end_layout
+
+\begin_layout Standard
+end
+\end_layout
+
+\begin_layout Standard
+disp('Положительные корни:'); 
+\end_layout
+
+\begin_layout Standard
+disp(positive_roots);
+\end_layout
+
+\begin_layout Standard
+figure; plot
+\begin_inset Formula $(x,f(x));$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+hold on; 
+\end_layout
+
+\begin_layout Standard
+scatter(positive_roots, zeros(size(positive_roots)), 'r', 'filled'); 
+\end_layout
+
+\begin_layout Standard
+title
+\begin_inset Formula $('$
+\end_inset
+
+График функции
+\begin_inset Formula $f(x)')$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Standard
+xlabel
+\begin_inset Formula $('x')$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Standard
+ylabel
+\begin_inset Formula $('f(x)')$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Standard
+legend
+\begin_inset Formula $('f(x)','$
+\end_inset
+
+Положительные корни
+\begin_inset Formula $')$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Standard
+Результат:Положительные корни: 
+\begin_inset Formula $2.8523$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+И получил такой результат;
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 2-graphics in LYX.png
+	lyxscale 40
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+2-График функции
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ответ: 
+\begin_inset Formula $2.8523$
+\end_inset
+
+ между 
+\begin_inset Formula $x=0:10;$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+2-Задача: Определить значение постоянной Стефана-Больцмана σ в законе Стефана-Бо
+льцмана:
+\begin_inset Formula $j=σT^{4}$
+\end_inset
+
+, где j - плотность энергетического потока излучения абсолютно черного тела,
+ 
+\begin_inset Formula $T$
+\end_inset
+
+ - температура тела.
+ Постоянная Стефана-Больцмана определяется после интегрирования формулы
+ Планка по всем частотам 
+\begin_inset Formula $ν:$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-2"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\begin{equation}
+B(ν;T)=\text{\ensuremath{\frac{2hν^{3}}{c^{2}}}}\text{\ensuremath{\frac{1}{(exp(\frac{hν}{k_{B}T})-1)}}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+где:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+- 
+\begin_inset Formula $ν$
+\end_inset
+
+ - частота излучения,
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+- 
+\begin_inset Formula $h$
+\end_inset
+
+ - постоянная Планка, 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+- 
+\begin_inset Formula $c$
+\end_inset
+
+ - скорость света,
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+- 
+\begin_inset Formula $k_{B}$
+\end_inset
+
+ - постоянная Больцмана.
+\end_layout
+
+\begin_layout Standard
+РЕШЕНИЕ:
+\end_layout
+
+\begin_layout Standard
+Я сначала написал функцию, примерно взял значения от нуля до 50, построил
+ график и проанализировал, в каком диапазоне есть смысл.
+ Затем я взял это значение за интеграл, проинтегрировал и решил все .
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-3"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Коды для решения:
+\end_layout
+
+\begin_layout Standard
+x=0:0.1:50;
+\end_layout
+
+\begin_layout Standard
+plot(x,x.^3./(exp(x)-1))
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 3-graphics in LYX.jpg
+	lyxscale 40
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+3-график
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+После анализа графика, я понял, что смысл заключается в диапазоне от нуля
+ до пятнадцати.
+ Поэтому я решил взять интеграл от нуля до пятнадцати.
+\end_layout
+
+\begin_layout Standard
+Постоянная Стефана-Больцмана определяется после интегрирования формулы Планка
+ по всем частотам 
+\begin_inset Formula $ν$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\begin{equation}
+B(ν;T)=\text{\ensuremath{\frac{2hν^{3}}{c^{2}}}}\text{\ensuremath{\frac{1}{(exp(\frac{hν}{k_{B}T})-1)}}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x=0:0.1:15$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Я вычислял интеграл для этой формулы:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+ν'=\frac{h\nu}{k_{B}T}=x
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Теперь немного математической арифметики.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\int\frac{1}{e^{\frac{h\nu}{k_{B}T}}-1}d\nu\cdot2\cdot\frac{h\nu^{3}}{c^{2}}$
+\end_inset
+
+ теперь давайте переформулируем это,для 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\frac{h\nu}{k_{B}T}=x$
+\end_inset
+
+; 
+\begin_inset Formula $dx=d\nu\frac{h}{k_{B}T}$
+\end_inset
+
+; 
+\begin_inset Formula $\nu=\frac{xkT}{h};$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Тогда мы получаем следующий результат.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\int\frac{1}{e^{x}-1}\cdot2\cdot x^{3}\frac{\left(k\cdot T\right)^{4}}{c^{2}h^{3}}dx$
+\end_inset
+
+ и это выражение равно 
+\begin_inset Formula $\sigma\cdot T^{4}$
+\end_inset
+
+, тогда температура сокращается, когда 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\sigma=\int\frac{1}{e^{x}-1}\cdot2\cdot x^{3}\cdot\frac{k^{4}}{c^{2}h^{3}}dx
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+И возьмем интеграл от нуля до пятнадцати:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\sigma=\text{\int\limits _{0}^{15}}\frac{1}{e^{x}-1}\cdot2\cdot x^{3}\cdot\frac{k^{4}}{c^{2}h^{3}}dx
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Теперь напишем листинг для этой формулы на MATLAB.
+\end_layout
+
+\begin_layout Standard
+h = 
+\begin_inset Formula $6.62e-34;$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+c = 
+\begin_inset Formula $3e8;$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+k = 
+\begin_inset Formula $1.38e-23;$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+B = @(x) (x.^3./(exp(x)-1))*2*pi*(k.^4./(h.^3.*c.^2));
+\end_layout
+
+\begin_layout Standard
+result = integral(B, 0 ,15);
+\end_layout
+
+\begin_layout Standard
+disp([ ' результат ', num2str(result)]);
+\end_layout
+
+\begin_layout Standard
+результат 
+\begin_inset Formula $5.6663e-08$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename последный результат.png
+	lyxscale 40
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+4-График Результат второй задачи
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+Мы получили следующий результат : 
+\begin_inset Formula $5.6663e-08$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+На самом деле, постоянная Стефана-Больцмана равна 
+\begin_inset Formula $5.670374419...×10⁻⁸Вт·м⁻²·К⁻⁴$
+\end_inset
+
+.
+ Это означает, что результат, который мы получили, почти совпадает.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-1"
+
+\end_inset
+
+William H.
+ Press, Saul A.
+ Teukolsky, William T.
+ Vetterling, Brian P.
+ Flannery ;Numerical Recipes 3rd Edition: The Art of Scientific Computing;Cambri
+dge University Press ;2007
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-2"
+
+\end_inset
+
+ Дж.
+ Б.
+ Тейлор ;Классическая механика;Москва Мир;1978 
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-3"
+
+\end_inset
+
+Ю.
+ С.
+ Апостольский, В.
+ В.
+ Батыгин;Справочник по физике;Наука ;1981
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-4"
+
+\end_inset
+
+Дж.
+ Х.
+ Мойлен, Л.
+ Е.
+ Крейг;MATLAB for Engineers;Pearson ;2014
+\end_layout
+
+\end_body
+\end_document
